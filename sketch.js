@@ -30,18 +30,22 @@ var lC = 60
 var aC = 60
 var VxC = []
 var VyC = []
-var cartaValor = 'A' 
+ 
 var cartaVirada = false 
 var VcVirada = []
-var VcValor = ['A','B','B','A', 'C', 'C', 'D', 'E', 'D', 'E', 'F', 'F']
+var Palavras = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+var VcValor = []
+
+
 function setup() {
   createCanvas(1200, 600);
   background(0,0,255);
-  for(i=0; i<12; i++){
+  VcValor = shuffle(Palavras)
+  for(i=0; i<18; i++){
     VcVirada[i] = true
   }
-  VxC = [100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600]
-  VyC = [100, 100, 100, 100, 100, 100, 200, 200, 200, 200, 200, 200]
+  VxC = [100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600]
+  VyC = [100, 100, 100, 100, 100, 100, 200, 200, 200, 200, 200, 200, 300, 300, 300, 300, 300, 300]
 
 
 }
@@ -94,13 +98,14 @@ function telaJogar() {//jogando está sem jogo no momento
   text("Voltar", xV+10, yV+vAltura/2);;
 
   //Prova Final
-    for(i=0; i<12; i++){
+    for(i=0; i<18; i++){
+
       fill(255)
       rect(VxC[i],VyC[i],lC,aC)  
       if ( VcVirada[i] ) {
-        textSize(26)
+        textSize(40)
         fill(0)
-        text(VcValor[i],VxC[i]+20,VyC[i]+40) 
+        text(VcValor[i],VxC[i]+20,VyC[i]+20) 
     }
   }
 }
@@ -159,7 +164,6 @@ function draw() {//aqui a função draw desenha a tela definida a partir da vari
 }
 function mouseClicked() {
   if ( tela === 0 ){
-    console.log(mouseX,mouseY);
     if ( mouseX > xMenu && mouseX < xMenu + menuLargura && mouseY > yMenu1 && mouseY < yMenu1 + menuAltura) {
       tela = 1;
     }
@@ -175,9 +179,12 @@ function mouseClicked() {
       tela = 0;
     }
   }
-  for(i=0; i<12; i++ ) {
-    if (mouseX > VxC[i] && mouseX < VxC[i] + lC && mouseY > VyC[i] && mouseY < VyC[i] + aC ) { 
-      VcVirada[i] = ! VcVirada[i]
+  if (tela === 1){
+    for(i=0; i<18; i++ ) {
+      if (mouseX > VxC[i] && mouseX < VxC[i] + lC && mouseY > VyC[i] && mouseY < VyC[i] + aC ) {
+        VcVirada[i] = ! VcVirada[i]
     }
+  }
+  
   }
 }
