@@ -33,7 +33,7 @@ var VyC = []
 var cartaValor = 'A' 
 var cartaVirada = false 
 var VcVirada = []
-var VcValor = ['A','B','B','A', 'C', 'C', 'D', 'E', 'D', 'E', 'F']
+var VcValor = ['A','B','B','A', 'C', 'C', 'D', 'E', 'D', 'E', 'F', 'F']
 function setup() {
   createCanvas(1200, 600);
   background(0,0,255);
